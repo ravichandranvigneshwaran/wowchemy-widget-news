@@ -1,5 +1,8 @@
 {{ $page := .root }}
 {{ $section := .page }}
-
-<p> {{ $section.Params }} </p>
-
+<script async defer src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.2"></script>
+{{ range $section.Params.fbFeed }}
+    <div class="fb-post" 
+      data-href="{{ . }}"
+      data-width="500"></div>
+{{ end }}
