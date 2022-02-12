@@ -1,8 +1,8 @@
 {{ $page := .root }}
 {{ $section := .page }}
 
-<p> .Params </p>
-{{ range .Params.fbFeed }}
+<p> $section </p>
+{{ range $section.fbFeed }}
     <p>{{.}}</p>
 {{ end }}
 
