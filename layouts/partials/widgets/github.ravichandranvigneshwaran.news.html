@@ -6,3 +6,7 @@
       data-href="{{ . }}"
       data-width="500"></div>
 {{ end }}
+
+{{ range $section.Params.fbFeed }}
+    {{ . }}
+{{ end }}
