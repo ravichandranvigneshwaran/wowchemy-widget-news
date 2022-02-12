@@ -1,3 +1,3 @@
-module github.com/vigneshwaran-ravichandran/wowchemy-widget-news
+module github.com/ravichandranvigneshwaran/wowchemy-widget-news
 
 go 1.15
