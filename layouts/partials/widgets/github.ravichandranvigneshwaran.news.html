@@ -5,8 +5,17 @@
   <h1>{{ $section.Params.title }}</h1>
 </div>
 
+<style>
+  .fb-post{
+    padding:15px;
+  }
+  .fb-post-container{
+    padding: 0px 10%;
+  }
+</style>
+
 <div class="universal-wrapper pt-3">
-  <div class="container-fluids">
+  <div class="container-fluid fb-post-container">
 <script async defer src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.2"></script>
 {{ range $section.Params.fbFeed }}
     <div class="fb-post" 
