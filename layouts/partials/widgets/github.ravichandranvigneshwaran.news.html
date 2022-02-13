@@ -1,9 +1,17 @@
 {{ $page := .root }}
 {{ $section := .page }}
+
+<div class="universal-wrapper pt-3">
+  <h1>{{ $section.Params.title }}</h1>
+</div>
+
+<div class="universal-wrapper pt-3">
+  <div class="container-fluids">
 <script async defer src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.2"></script>
 {{ range $section.Params.fbFeed }}
     <div class="fb-post" 
       data-href="{{ . }}"
-      data-width="1000"></div>
+      data-width="700"></div>
 {{ end }}
-
+</div>
+</div>
