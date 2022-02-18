@@ -15,6 +15,7 @@
 </style>
 
 <script>
+  function fbFeedUpdated(){
   var fbFeedData = $section.Params.fbFeed;
   var HTMLData = "";
   if(fbFeedData.length){
@@ -42,6 +43,8 @@
 
     console.log(HTMLData);
   }
+}
+fbFeedUpdated();
 </script>
 
 <div class="universal-wrapper pt-3">
