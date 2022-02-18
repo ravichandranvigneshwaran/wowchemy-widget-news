@@ -58,7 +58,7 @@
     }
   }
   window.paginationUpdate = function (pageNumber) {
-    if (window.totalPage > pageNumber) {
+    if (window.totalPage >= pageNumber) {
       window.currentPage = pageNumber;
       fbFeedUpdated();
       setTimeout(function () {
