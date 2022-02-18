@@ -6,68 +6,68 @@
 </div>
 
 <style>
-  /* .fb-post{
-    padding:15px;
-  }
-  #fb-post-container{
-    padding: 0px 10%;
-  } */
   .fb-feed-row{
     margin: 30px -15px !important;
+  }
+  .pagination-container{
+    margin-top: 100px;
   }
 </style>
 
 
   <div id="fb-post-container">
+  </div>
 
-<!-- {{ range $section.Params.fbFeed }}
-    <div class="fb-post" 
-      data-href="{{ . }}"
-      data-width="700"></div>
-{{ end }} -->
-</div>
-
-<nav aria-label="Page navigation example">
+<div class="pagination-container d-flex justify-content-center">
+<nav aria-label="Page navigation">
   <ul class="pagination">
-    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-    <li class="page-item"><a class="page-link" href="#">1</a></li>
-    <li class="page-item"><a class="page-link" href="#">2</a></li>
-    <li class="page-item"><a class="page-link" href="#">3</a></li>
-    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+    <li class="page-item"><a class="page-link" onclick="prevPagination()">Previous</a></li>
+    <li class="page-item"><a class="page-link" onclick="paginationUpdate(1)">1</a></li>
+    <li class="page-item"><a class="page-link" onclick="paginationUpdate(2)">2</a></li>
+    <li class="page-item"><a class="page-link" onclick="paginationUpdate(3)">3</a></li>
+    <li class="page-item"><a class="page-link" onclick="nextPagination()">Next</a></li>
   </ul>
 </nav>
-
+</div>
 
 <script>
+  window.currentPage = 1;
+  window.totalPage=4;
+  window.fbFeedData = '{{ $section.Params.fbFeed }}'.replace(/\[|\]/g,'').split(' ');
+  window.totalItem = fbFeedData.length;
   function fbFeedUpdated(){
-  var fbFeedData = '{{ $section.Params.fbFeed }}'.replace(/\[|\]/g,'').split(' ');
   var HTMLData = "";
-  if(fbFeedData.length){
+  if(window.fbFeedData.length){
     HTMLData+='<div class="container">';
     HTMLData+='<div class="row fb-feed-row">';
-    for (var itr=0;itr<fbFeedData.length;itr=itr+2){
-      if(fbFeedData[itr]){
+    for (var itr=0+(10*(window.currentPage - 1));itr<(totalItem - (10*(window.currentPage)) > 0 ? (10*(window.currentPage)) : totalItem);itr=itr+2){
+      if(window.fbFeedData[itr]){
         HTMLData+=`<div class="col"><div class="fb-post" 
-        data-href="${fbFeedData[itr]}"
+        data-href="${window.fbFeedData[itr]}"
         data-width="700"></div></div>`;
       }
-      if(fbFeedData[itr+1]){
+      if(window.fbFeedData[itr+1]){
         HTMLData+=`<div class="col"><div class="fb-post" 
-        data-href="${fbFeedData[itr+1]}"
+        data-href="${window.fbFeedData[itr+1]}"
         data-width="700"></div></div>`;
       }else{
         HTMLData+=`<div class="col"><div></div></div>`;
       }
-      if(fbFeedData[itr+2]){
+      if(window.fbFeedData[itr+2]){
         HTMLData+=`</div><div class="row fb-feed-row">`;
       }
     }
 
-    HTMLData+='</div></div>';
+    function paginationUpdate(pageNumber){
+      if(window.totalPage > pageNumber){
+        window.currentPage = pageNumber;
+        fbFeedUpdated();
+      }
+      
 
-    console.log(HTMLData);
-    var temp = document.createElement('div');
-    temp.innerHTML = HTMLData;
+    }
+
+    HTMLData+='</div></div>';
     document.getElementById("fb-post-container").innerHTML = HTMLData;
   }
 }
