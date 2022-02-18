@@ -47,7 +47,7 @@
 <div class="universal-wrapper pt-3">
   <div class="container-fluid fb-post-container">
 <script async defer src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.2"></script>
-{{ range  }}
+{{ range $section.Params.fbFeed }}
     <div class="fb-post" 
       data-href="{{ . }}"
       data-width="700"></div>
