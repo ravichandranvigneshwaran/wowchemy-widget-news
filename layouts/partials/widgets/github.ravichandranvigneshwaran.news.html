@@ -59,7 +59,7 @@
   }
   window.paginationIconUpdate=function(){
     var activeElem = document.getElementsByClassName("num-item active");
-    activeElem.classList.remove("active");
+    activeElem[0].classList.remove("active");
     var allNumItem = document.getElementsByClassName("num-item");
     allNumItem[window.currentPage - 1].classList.add("active");
   };
