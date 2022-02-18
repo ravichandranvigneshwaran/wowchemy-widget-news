@@ -9,7 +9,7 @@
   .fb-post{
     padding:15px;
   }
-  .fb-post-container{
+  #fb-post-container{
     padding: 0px 10%;
   }
 </style>
@@ -44,18 +44,19 @@
     HTMLData+='</div></div>';
 
     console.log(HTMLData);
+    $("#fb-post-container").append(HTMLData);
   }
 }
 fbFeedUpdated();
 </script>
 
 <div class="universal-wrapper pt-3">
-  <div class="container-fluid fb-post-container">
+  <div id="fb-post-container">
 <script async defer src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.2"></script>
-{{ range $section.Params.fbFeed }}
+<!-- {{ range $section.Params.fbFeed }}
     <div class="fb-post" 
       data-href="{{ . }}"
       data-width="700"></div>
-{{ end }}
+{{ end }} -->
 </div>
 </div>
