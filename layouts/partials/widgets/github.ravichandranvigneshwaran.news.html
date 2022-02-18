@@ -57,6 +57,9 @@
 
     HTMLData+='</div></div>';
     document.getElementById("fb-post-container").innerHTML = HTMLData;
+    setTimeout(function(){
+    window.FB.XFBML.parse();
+    },1000);
   }
 }
 fbFeedUpdated();
