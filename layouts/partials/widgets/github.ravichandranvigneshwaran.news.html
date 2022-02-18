@@ -16,7 +16,7 @@
 
 <script>
   function fbFeedUpdated(){
-  var fbFeedData = "{{ $section.Params.fbFeed }}";
+  var fbFeedData = JSON.parse("{{ $section.Params.fbFeed }}");
   var HTMLData = "";
   if(fbFeedData.length){
     HTMLData+='<div class="container">';
