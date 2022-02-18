@@ -91,7 +91,7 @@
     prevElem.classList.add("page-item");
     var prevAnchor = document.createElement("a");
     prevAnchor.classList.add("page-link");
-    prevAnchor.onclick=window.prevPagination();
+    prevAnchor.setAttribute("onclick", "prevPagination()");
     prevAnchor.innerHTML="Previous";
     prevElem.append(prevAnchor);
     root.append(prevElem);
@@ -104,7 +104,7 @@
       if(itr == window.currentPage){
         prevElem.classList.add("active");
       }
-      prevAnchor.onclick=window.paginationUpdate(itr);
+      prevAnchor.setAttribute("onclick", `paginationUpdate(${itr})`);
       prevAnchor.innerHTML=itr;
       prevElem.append(prevAnchor);
       root.append(prevElem);
@@ -114,7 +114,7 @@
     prevElem.classList.add("page-item");
     prevAnchor = document.createElement("a");
     prevAnchor.classList.add("page-link");
-    prevAnchor.onclick=window.nextPagination();
+    prevAnchor.setAttribute("onclick", "nextPagination()");
     prevAnchor.innerHTML="Next";
     prevElem.append(prevAnchor);
     root.append(prevElem);    
