@@ -14,10 +14,40 @@
   }
 </style>
 
+<script>
+  var fbFeedData = $section.Params.fbFeed;
+  var HTMLData = "";
+  if(fbFeedData.length){
+    HTMLData+='<div class="container">';
+    HTMLData+='<div class="row">';
+    for (var itr=0;itr<fbFeedData.length;itr=itr+2){
+      if(fbFeedData[itr]){
+        HTMLData+=`<div class="col"><div class="fb-post" 
+        data-href="${fbFeedData[itr]}"
+        data-width="700"></div></div>`;
+      }
+      if(fbFeedData[itr+1]){
+        HTMLData+=`<div class="col"><div class="fb-post" 
+        data-href="${fbFeedData[itr+1]}"
+        data-width="700"></div></div>`;
+      }else{
+        HTMLData+=`<div class="col"><div></div></div>`;
+      }
+      if(fbFeedData[itr+2]){
+        HTMLData+=`</div><div class="row">`;
+      }
+    }
+
+    HTMLData+='</div></div>';
+
+    console.log(HTMLData);
+  }
+</script>
+
 <div class="universal-wrapper pt-3">
   <div class="container-fluid fb-post-container">
 <script async defer src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.2"></script>
-{{ range $section.Params.fbFeed }}
+{{ range  }}
     <div class="fb-post" 
       data-href="{{ . }}"
       data-width="700"></div>
