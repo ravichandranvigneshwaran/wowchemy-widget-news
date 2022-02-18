@@ -91,7 +91,7 @@
     prevElem.classList.add("page-item");
     var prevAnchor = document.createElement("a");
     prevAnchor.classList.add("page-link");
-    prevAnchor.onclick="prevPagination()";
+    prevAnchor.onclick=window.prevPagination();
     prevAnchor.innerHTML="Previous";
     prevElem.append(prevAnchor);
     root.append(prevElem);
@@ -102,9 +102,9 @@
       prevAnchor = document.createElement("a");
       prevAnchor.classList.add("page-link");
       if(itr == window.currentPage){
-        prevAnchor.classList.add("active");
+        prevElem.classList.add("active");
       }
-      prevAnchor.onclick=`paginationUpdate(${itr})`;
+      prevAnchor.onclick=window.paginationUpdate(itr);
       prevAnchor.innerHTML=itr;
       prevElem.append(prevAnchor);
       root.append(prevElem);
@@ -114,7 +114,7 @@
     prevElem.classList.add("page-item");
     prevAnchor = document.createElement("a");
     prevAnchor.classList.add("page-link");
-    prevAnchor.onclick="nextPagination()";
+    prevAnchor.onclick=window.nextPagination();
     prevAnchor.innerHTML="Next";
     prevElem.append(prevAnchor);
     root.append(prevElem);    
