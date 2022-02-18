@@ -57,10 +57,17 @@
       document.getElementById("fb-post-container").innerHTML = HTMLData;
     }
   }
+  window.paginationIconUpdate=function(){
+    var activeElem = document.getElementsByClassName("num-item active");
+    activeElem.classList.remove("active");
+    var allNumItem = document.getElementsByClassName("num-item");
+    allNumItem[window.currentPage - 1].classList.add("active");
+  };
   window.paginationUpdate = function (pageNumber) {
     if (window.totalPage >= pageNumber) {
       window.currentPage = pageNumber;
       fbFeedUpdated();
+      paginationIconUpdate();
       setTimeout(function () {
         window.FB.XFBML.parse();
       }, 1000);
@@ -70,6 +77,7 @@
     if(window.currentPage > 1){
       window.currentPage = window.currentPage - 1;
       fbFeedUpdated();
+      paginationIconUpdate();
       setTimeout(function () {
         window.FB.XFBML.parse();
       }, 1000);
@@ -79,6 +87,7 @@
     if(window.currentPage < window.totalPage){
       window.currentPage = window.currentPage + 1;
       fbFeedUpdated();
+      paginationIconUpdate();
       setTimeout(function () {
         window.FB.XFBML.parse();
       }, 1000);
@@ -99,6 +108,7 @@
     for(var itr=1;itr<=totalPage;itr++){
       prevElem = document.createElement("li");
       prevElem.classList.add("page-item");
+      prevElem.classList.add("num-item");
       prevAnchor = document.createElement("a");
       prevAnchor.classList.add("page-link");
       if(itr == window.currentPage){
