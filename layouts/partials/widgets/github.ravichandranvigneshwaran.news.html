@@ -46,7 +46,7 @@
       }
     }
 
-    function paginationUpdate(pageNumber){
+    window.paginationUpdate=function (pageNumber){
       if(window.totalPage > pageNumber){
         window.currentPage = pageNumber;
         fbFeedUpdated();
