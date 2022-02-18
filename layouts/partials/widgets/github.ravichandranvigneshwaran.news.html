@@ -44,7 +44,9 @@
     HTMLData+='</div></div>';
 
     console.log(HTMLData);
-    document.getElementById("fb-post-container").appendChild(HTMLData);
+    var temp = document.createElement('div');
+    temp.innerHTML = HTMLData;
+    document.getElementById("fb-post-container").appendChild(temp);
   }
 }
 fbFeedUpdated();
